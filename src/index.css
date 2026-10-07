@@ -678,8 +678,7 @@ a:focus-visible {
   }
 
   .intro-actions {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    display: flex;
     gap: 8px;
   }
 
@@ -763,10 +762,6 @@ a:focus-visible {
 }
 
 @media (max-width: 360px) {
-  .intro-actions {
-    grid-template-columns: 1fr;
-  }
-
   .button {
     justify-content: center;
   }

@@ -7,7 +7,6 @@ import {
   type Board,
   type Difficulty,
 } from "./utils/minesweeper";
-import { downloadMinesweeperPdf } from "./utils/minesweeperPdf";
 
 type GameStatus = "playing" | "won" | "lost";
 
@@ -51,15 +50,6 @@ function ResetIcon() {
         strokeLinecap="round"
       />
       <path d="M13.7 3.7v4.2h4.1" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
-function DownloadIcon() {
-  return (
-    <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-      <path d="M10 2.8v9.1m0 0 3.1-3.1M10 11.9 6.9 8.8" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M3.6 13.3v3.1h12.8v-3.1" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
@@ -193,10 +183,6 @@ export default function App() {
     toggleFlag(row, col);
   }
 
-  function handlePdfDownload(): void {
-    downloadMinesweeperPdf(board, difficulty);
-  }
-
   const remainingMines = settings.mines - flagCount;
   const statusMessage =
     gameStatus === "won"
@@ -233,9 +219,6 @@ export default function App() {
           <div className="intro-actions">
             <button className="button button-dark" type="button" onClick={() => startNewGame()}>
               <ResetIcon /> Nueva partida
-            </button>
-            <button className="button button-light" type="button" onClick={handlePdfDownload}>
-              <DownloadIcon /> Descargar PDF
             </button>
           </div>
 
@@ -359,13 +342,13 @@ export default function App() {
               </button>
             </div>
           </div>
-          <div className="board-hint">El PDF incluye el tablero para resolver y la solución.</div>
+          <div className="board-hint">Clic derecho sobre una casilla para marcarla como mina.</div>
         </section>
       </main>
 
       <footer className="site-footer">
         <span>UN JUEGO DE PACIENCIA Y LÓGICA</span>
-        <span>JUEGA EN PANTALLA O IMPRIME TU PARTIDA</span>
+        <span>UNA CASILLA CADA VEZ</span>
       </footer>
     </div>
   );
